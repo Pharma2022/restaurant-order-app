@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Smythe&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://kit.fontawesome.com/c06f05b4aa.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Order App</title>
+  </head>
+  <body>
+      <header class="flex-row" >
+          <div class="container header-container flex-col">
+              <h1 class="title">Shah's Diner</h1>
+              <h2 class="subtitle">The Best Diner in town</h2>
+          </div>
+      </header>
+  
+  <!-- menu  -->
+      <section class="menu-wrapper">
+        <div class="container menu-container flex-col" id="menu">
+          
+          <!-- MENU ITEMS -->
+          
+              
+          
+      </div>
+  </section>
+  <!-- Order -->
+  <section class="order-wrapper">
+      <div class="container order-container flex-col">
+          <h3 class="order-title">Your Order</h3>
+          <div class="order-items-container flex-col">
+                  <div class="order-item-wrapper flex-row space-between align-center">
+                      <div class="order-content-wrapper flex-row align-center space-between">
+                          <p class="order-content-food">Pizza</p>
+                          <span class="order-content-button">Remove</span>
+                      </div>
+                      <div class="order-price">$8</div>
+                      
+                  </div>
+                  <div class="order-item-wrapper flex-row space-between align-center">
+                      <div class="order-content-wrapper flex-row align-center space-between">
+                          <p class="order-content-food">Pizza</p>
+                          <span class="order-content-button">Remove</span>
+                      </div>
+                      <div class="order-price">$8</div>
+                      
+                  </div>
+                  <div class="order-item-wrapper flex-row space-between align-center">
+                      <div class="order-content-wrapper flex-row align-center space-between">
+                          <p class="order-content-food">Pizza</p>
+                          <span class="order-content-button">Remove</span>
+                      </div>
+                      <div class="order-price">$8</div>
+                      
+                  </div>
+                  
+              
+          </div>
+          <div class="total-price-wrapper flex-row space-between align-center">
+              <span class="total-price-text">Total price:</span>
+              <span class="total-price-amount">$26</span>
+          </div>
+          <button class="order-button btn-primary">Complete Order</button>
+      </div>
+      
+      
+      
+      <div class="container order-confirmation-container">
+          <h3 class="order-confirmation-text">Thank you Shah your order is on the way </h3>
+          <button class="new-order-button">New Order</button>
+      </div>
+  </section>
+  
+  <!-- Form -->
+  <div class="form-container">
+      <h4 class="form-title">Enter Card Details</h4>    
+      <form class="payment-form flex-col">
+          <input class="payment-form-input" type="name" id="name" />
+          <input class="payment-form-input" type="text" id="card-number" />
+          <input class="payment-form-input" type="number" id="cvv"/>
+          <button class="payment-button">Pay</button>
+      </form>
+      
+  </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

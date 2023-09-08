@@ -1,0 +1,352 @@
+*,::before,::after{
+  box-sizing: border-box
+}
+:root{
+  --ff-verdana:'Verdana', sans-serif;
+  --ff-smythe: 'Smythe', cursive;
+  --ff-inter:'Inter', sans-serif;
+  --white-primary:#fff;
+  --black-primary:#000;
+  --black-secondary:'#3C3C3C';
+  --gray-100:#d2d2d2;
+  /* gray-100 for hr */
+  --gray-200:#bbb;
+  /* remove menu items */
+  --gray-400:#8b8b8b;
+  /* ingredients */
+  --gray-500:#757575;
+  /*gray-500 input borders on form */
+  --gray-700:#3C3C3C;
+  --green-100:#ECFDF5;
+  --green-200:#16db99;
+  --green-500:#065F46;
+  
+}
+
+  /* <!--CSS RESET --> */
+section,div,span,form,label,input,button,h1,h2,h3,h4,h5,p,body,html {
+  margin: 0;
+  padding: 0
+ 
+} 
+
+button,input{
+  border: none;
+  outline: none;
+}
+
+
+  /* <!-- Utility Styles --> */
+.flex-row{
+  display: flex;
+}
+.flex-col{
+  display: flex;
+  flex-direction: column;
+}
+.space-between{
+  justify-content: space-between;    
+}
+.justify-center{
+  justify-content: center;   
+}
+
+.align-center{
+  align-items: center;    
+}
+.wrap{
+  flex-wrap: wrap;
+}
+.container{
+  width: 90%;
+  margin-inline:auto;
+  padding: 1rem;
+}
+@media(min-width:640px){
+  .container{
+      padding: 2rem;
+      max-width: 45rem;
+  }
+}
+
+
+  /* <!-- Typography --> */
+
+
+body{
+  font-family: var(--ff-smythe);
+}
+header{
+  text-align: left;
+  font-weight: 400;
+  
+  
+}
+.title{
+  font-size: 2.4rem;
+  color: var(--white-primary);
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+}
+.subtitle{
+  font-size: 1.375rem;   
+  color: var(--white-primary);
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+}
+.menu-food-emoji{
+  font-family: var(--ff-inter);
+  font-size:4.875rem; 
+  font-style: normal;
+  font-weight: 400;
+  opacity: 0.72;
+  letter-spacing: -0.09838rem;
+}
+.menu-food-name{
+  font-size: 1.75rem;
+  color: var(--black-primary)    
+}
+.menu-food-ingredients{
+  font-size: 1rem;
+  color: var(--gray-400);
+}
+.menu-food-price{
+  font-size: 1.75rem;
+  color: var(--black-primary);
+}
+.menu-button{
+  font-family: var(--ff-inter);
+  font-size: 2rem;
+  color: var(--gray-700);
+}
+
+.order-title{
+  font-size: 1.75rem;
+  color: var(--black-primary)
+}
+
+.order-content-food{
+  font-size: 1.75rem;
+  color: var(--black-primary);
+  
+  
+}
+.order-content-button{
+  font-family: var(--ff-verdana);
+  font-size: 0.75rem;
+  color: var(--gray-200)
+}
+
+.order-price{
+  font-size: 1.25rem;
+  color: var(--black-primary);
+}
+
+
+.total-price-text{
+  font-size: 1.75rem;
+  font-family: var(--ff-smythe);
+    color: var(--black-primary);   
+}
+.total-price-amount{
+  font-size: 1.25rem;
+    color: var(--black-primary);
+}
+.order-button{
+  font-size: 1rem;
+
+}
+
+
+.btn-primary{
+     font-family: var(--ff-verdana);
+     color: var(--white-primary);
+     font-weight: 700;
+
+}
+/* div class="total-price-wrapper flex-row">
+                  <span class="total-price-text">Total price:</span>
+                  <span class="total-price-amount">$26</span>
+              </div>
+              <button class="order-button">Complete Order</button> */
+
+.new-order-button{
+  font-family: var(--ff-verdana);
+  font-size: 1.25rem;
+}
+
+.payment-form-button,.payment-form-input{
+  font-family: var(--ff-verdana);
+  font-size: 1.25rem;
+}
+.payment-form-button{
+  color: var(--white-primary);
+  font-weight: 700;
+}
+.payment-form-input{
+  color: var(--gray-500);
+}
+
+
+
+
+  /* <!-- Buttons --> */
+
+.btn-primary{
+  padding: 1rem 2rem;
+  border-radius: 0.24313rem;
+  background: #16DB99;
+}
+/* add item */
+.btn-secondary{
+  
+}
+/*remove item  */
+
+/* complete order, pay, new order */
+
+
+  /* <!-- Main Styles --> */
+header{
+  background-image: url('./assets/img/jimmys-diner.png');
+  height: 18rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+ 
+  
+}    
+.header-container{
+
+   justify-content: center;
+  /* align-items:center */
+  gap:1rem;
+}   
+  
+.title{
+  
+}
+.subtitle{
+  
+}
+
+.menu-wrapper{
+  
+}
+.menu-container{
+  
+  
+}
+.menu-item-wrapper{
+  
+}
+.menu-item{
+  padding: 1rem;
+  align-items: center;
+  
+  gap:2rem;
+}
+
+.menu-content-wrapper{
+  /* padding: 1rem; */
+}
+.menu-content-food-wrapper{
+  
+}
+.menu-food-emoji{
+  min-width: 7rem;
+  margin-right: 2.5rem;  
+  
+}
+.menu-food-name{
+   padding-block: .5rem;
+}
+
+.menu-food-ingredients{
+   padding-block: .5rem;
+}
+.menu-food-price{
+   padding-block: 1rem;
+}
+.menu-button-wrapper{
+  
+}
+.menu-button{
+  
+}
+
+.menu-hr{
+  border: 2px solid var(--gray-100);
+  width:100%;
+}
+
+
+
+.order-wrapper{
+  
+}
+.order-container{
+  
+}
+.order-title{
+  
+}
+.order-item-wrapper{
+  
+}
+.order-items-container{
+  
+}
+.order-content-wrapper{
+  
+}
+.order-content-food{
+  
+}
+.order-content-button{
+  
+}
+.order-price{
+  
+}
+
+.total-price-wrapper{
+  
+}
+.total-price-text{
+  
+}
+.total-price-amount{
+  
+}
+
+.order-button{
+  
+}
+
+
+.form-container{
+  display: none;
+}
+.payment-form{
+  
+  
+}
+.payment-form-input{
+  
+}
+
+.payment-form-button{
+  
+}
+
+.order-confirmation-container{
+  
+}
+
+.order-confirmation-text{
+  
+}
+.new-order-button{
+  
+}
