@@ -47,6 +47,9 @@ button,input{
 .space-between{
   justify-content: space-between;    
 }
+.space-around{
+  justify-content: space-around;
+}
 .justify-center{
   justify-content: center;   
 }
@@ -66,6 +69,12 @@ button,input{
   .container{
       padding: 2rem;
       max-width: 45rem;
+  }
+  .menu-food-emoji{
+    font-size: 4.875rem;
+  }
+  .menu-food-ingredients{
+    font-size: 1rem;;
   }
 }
 
@@ -96,18 +105,20 @@ header{
 }
 .menu-food-emoji{
   font-family: var(--ff-inter);
-  font-size:4.875rem; 
+  font-size:4rem; 
   font-style: normal;
   font-weight: 400;
   opacity: 0.72;
   letter-spacing: -0.09838rem;
 }
+
+
 .menu-food-name{
   font-size: 1.75rem;
   color: var(--black-primary)    
 }
 .menu-food-ingredients{
-  font-size: 1rem;
+  font-size: .9rem;
   color: var(--gray-400);
 }
 .menu-food-price{
@@ -241,21 +252,27 @@ header{
   
 }
 .menu-item{
-  padding: 1rem;
-  align-items: center;
-  
-  gap:2rem;
+ 
+
+ 
+  width: 100%;
+  gap:1.5rem;
+  justify-content: space-evenly;
+}
+.menu-item>*{
+  max-width: 100%;
 }
 
 .menu-content-wrapper{
   /* padding: 1rem; */
 }
 .menu-content-food-wrapper{
-  
+  border: 2px solid red;
+  min-width: 7.7rem;
 }
 .menu-food-emoji{
-  min-width: 7rem;
-  margin-right: 2.5rem;  
+  min-width: 5.5rem;
+ 
   
 }
 .menu-food-name{
@@ -269,9 +286,13 @@ header{
    padding-block: 1rem;
 }
 .menu-button-wrapper{
-  
+  border: 2px solid purple;
+  gap:.25rem;
+  justify-self: flex-start;
+
 }
 .menu-button{
+  
   
 }
 
