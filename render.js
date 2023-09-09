@@ -1,5 +1,4 @@
 import { menuArray } from "./data";
-import { nanoid } from "nanoid";
 import { menu,order } from "./consts";
 
 
@@ -10,42 +9,31 @@ const targetFood=(ID,arr)=>arr.filter(({id})=>id===ID)[0]
 
 
 export const removeItem=(ID)=>{
+    console.log(ID)
     const targetOrderFood= targetFood(ID,ordersArr)
 
-    if (targetOrderFood.count){
-        targetFood.count--
-    }
-    else if(!Number(targetFood.count)) {
-        ordersArr=ordersArr.filter(({id})=>id!=ID)
-    }
+    targetOrderFood.count ? targetOrderFood.count-- :""
+    ordersArr=(!targetOrderFood.count&&ordersArr.filter(({id})=>id!==ID))||ordersArr
+    renderMenu()
     renderOrder()
 }
 
 export const addItem=(ID)=>{
 
     const targetMenuFood=targetFood(ID,menuArray)
-
-    // const {name,price,id,type}=targetMenuFood
     const targetOrderFood=targetFood(ID,ordersArr)||null
-    
-    if (!targetOrderFood){
-
-        
-        ordersArr.push({...targetMenuFood,count:1})
-    } else{
-        targetOrderFood.count++
-        console.log(targetOrderFood)
-    }
+    targetOrderFood?targetOrderFood.count++ :ordersArr.push({...targetMenuFood,count:1})
     renderMenu()
     renderOrder()
-    
-   
 }
 
 
 
 
-export const renderMenu=()=>menu.innerHTML=`<div class="menu-item-wrapper flex-col">${
+export const renderMenu=()=>{
+    // need to have a function that filters through the order array and accesses the count of each item. 
+    // If the count is 0 or less need to disable the remove button
+    menu.innerHTML=`<div class="menu-item-wrapper flex-col">${
     menuArray.map(({
         name,
         ingredients,
@@ -80,9 +68,11 @@ export const renderMenu=()=>menu.innerHTML=`<div class="menu-item-wrapper flex-c
         </div>
         <hr class="menu-hr"/>`).join("")
 
-}</div>`
+}</div>`}
 
-const renderOrder=()=>order.innerHTML=ordersArr.length?`<h3 class="order-title">Your Order</h3>
+const renderOrder=()=>{
+
+    order.innerHTML=ordersArr.length?`<h3 class="order-title">Your Order</h3>
         <div class="order-items-container flex-col" >
             ${ordersArr.map(({price,name,count,id})=>
                  `<div class="order-item-wrapper flex-row space-between align-center">
@@ -91,9 +81,16 @@ const renderOrder=()=>order.innerHTML=ordersArr.length?`<h3 class="order-title">
                                         ${name}
                                     </p>
                                     <span class='quantity'>Quantity: ${count} </span>
-                                    <span class="order-content-button" data-remove="${id}">
-                                        Remove
-                                    </span>
+                                    <button class="order-content-button"  >
+                                    ${count===1 ?`<span data-remove="${id}">remove</span>`:`<i class="fa-solid fa-circle-minus"data-remove="${id}">
+                                            </i>`}
+                                    </button>
+                                    <button class="order-content-button"  >
+                                    <i class="fa-solid fa-circle-plus" data-add="${id}" >
+                                            </i>
+                                    </button>
+                                  
+                                    
                             </div>
                             
                             <p class="order-price"
@@ -101,7 +98,7 @@ const renderOrder=()=>order.innerHTML=ordersArr.length?`<h3 class="order-title">
                             </p>
 
                     </div>`).join("")}
-        </div>`:""
+        </div>`:""}
 
 
 

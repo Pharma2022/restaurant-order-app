@@ -3,11 +3,9 @@ import { addItem } from "./render"
 renderMenu()
 import { removeItem } from "./render"
 document.addEventListener('click',(e)=>{
+   const {target:{dataset:{add,remove}}}=e
+
+    add&&addItem(add)
+    remove&&removeItem(remove)
    
-    if(e.target.dataset.add){
-        addItem(e.target.dataset.add)
-    }
-    if(e.target.dataset.remove){
-        removeItem(e.target.dataset.remove)
-    }
 })
