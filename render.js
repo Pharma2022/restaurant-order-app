@@ -9,6 +9,18 @@ const targetFood=(ID,arr)=>arr.filter(({id})=>id===ID)[0]
 
 
 
+export const removeItem=(ID)=>{
+    const targetOrderFood= targetFood(ID,ordersArr)
+
+    if (targetOrderFood.count){
+        targetFood.count--
+    }
+    else if(!Number(targetFood.count)) {
+        ordersArr=ordersArr.filter(({id})=>id!=ID)
+    }
+    renderOrder()
+}
+
 export const addItem=(ID)=>{
 
     const targetMenuFood=targetFood(ID,menuArray)
@@ -29,6 +41,9 @@ export const addItem=(ID)=>{
     
    
 }
+
+
+
 
 export const renderMenu=()=>menu.innerHTML=`<div class="menu-item-wrapper flex-col">${
     menuArray.map(({
