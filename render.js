@@ -10,25 +10,23 @@ const targetFood=(ID,arr)=>arr.filter(({id})=>id===ID)[0]
 
 
 export const addItem=(ID)=>{
-    
-    console.log('hello')
+
     const targetMenuFood=targetFood(ID,menuArray)
 
-    const {name,price,id,type}=targetMenuFood
-    const targetOrderFood=targetFood(ID,ordersArr)
+    // const {name,price,id,type}=targetMenuFood
+    const targetOrderFood=targetFood(ID,ordersArr)||null
     
-    // if (!targetOrderFood){
+    if (!targetOrderFood){
 
         
-    //     ordersArr.push({...targetMenuFood,count:1})
-    // } else{
-    //     targetOrderFood.count++
-    // }
-    // renderMenu()
+        ordersArr.push({...targetMenuFood,count:1})
+    } else{
+        targetOrderFood.count++
+        console.log(targetOrderFood)
+    }
+    renderMenu()
     renderOrder()
-    console.log('target menu food '+ targetMenuFood)
-    console.log('target order food '+ targetOrderFood)
-    console.log('orders arr '+ ordersArr)
+    
    
 }
 
@@ -77,8 +75,8 @@ const renderOrder=()=>order.innerHTML=ordersArr.length?`<h3 class="order-title">
                                     <p class="order-content-food">
                                         ${name}
                                     </p>
-                                    <span class='quantity>Quantity: ${count} </span>
-                                    <span class="order-content-button" data-remove=${id}>
+                                    <span class='quantity'>Quantity: ${count} </span>
+                                    <span class="order-content-button" data-remove="${id}">
                                         Remove
                                     </span>
                             </div>
