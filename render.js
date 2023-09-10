@@ -62,12 +62,10 @@ export const renderMenu=()=>{
                 </div>
                 <div class="menu-button-wrapper flex-row space-between">
                     <button class="menu-button"  >
-                    <i class="fa-solid fa-circle-minus" data-subtract="${id}">
-                            </i>
+                        <i class="fa-solid fa-circle-minus" data-subtract="${id}"></i>
                     </button>
-                    <button class="menu-button space-around"  >
-                    <i class="fa-solid fa-circle-plus" data-add="${id}">
-                            </i>
+                    <button class="menu-button"  >
+                        <i class="fa-solid fa-circle-plus" data-add="${id}"></i>
                     </button>
                 
                 </div>
@@ -83,27 +81,19 @@ export const renderOrder=()=>{
             ${ordersArr.map(({price,name,count,id})=>
                  `<div class="order-item-wrapper flex-row space-between align-center">
                             <div class="order-content-wrapper flex-row align-center space-between">
-                                    <p class="order-content-food">
-                                        ${name} x ${count} 
-                                    </p>
+                                    <div class="order-content-food flex-row space-between width-full">
+                                        <span>${name}</span> <span>x ${count}</span> 
+                                    </div>
                                     <span data-remove="${id}">remove</span>
-                                  
-                                   
-                                   
-                                    
-                                  
-                                    
                             </div>
                             
                             <div class='order-price-wrapper flex-row space-between align-center'>
-                                 <div class='order-content-button-wrapper flex-row space-around align-center'>
+                                <div class='order-content-button-wrapper flex-row space-around align-center'>
                                     <button class="order-content-button"  >
-                                        <i class="fa-solid fa-circle-minus" data-subtract="${id}">
-                                                </i>
+                                        <i class="fa-solid fa-circle-minus" data-subtract="${id}"></i>
                                     </button>
                                     <button class="order-content-button"  >
-                                        <i class="fa-solid fa-circle-plus" data-add="${id}" >
-                                                </i>
+                                        <i class="fa-solid fa-circle-plus" data-add="${id}" ></i>
                                     </button>
                                     
                                 </div>    
@@ -125,26 +115,27 @@ export const renderOrder=()=>{
 
 
 export const getOrderTotalHtml=()=>{
-    const subTotal = ordersArr.reduce((acc,{price})=>acc+price,0)
+    const subTotal = ordersArr.reduce((acc,{price})=>acc+price,0).toFixed(2)
     
-
-    const isDiscounted = ordersArr.filter(({type})=>type==='drink'&&type==='food')
-
+    const targetType=(typ)=>ordersArr.filter(({type})=>type===typ)[0]
+    const isDiscounted = targetType('food')&&targetType('drink')
+    console.log(isDiscounted)
     const total=isDiscounted? (subTotal*0.9).toFixed(2) :subTotal
     const discount =isDiscounted ? (subTotal-total).toFixed(2) :null
 
 
     return `${isDiscounted? 
-            `<div class="total-price-wrapper flex-row space-between align-center">
+            `<hr class='order-hr'/>
+            <div class="total-price-wrapper flex-row space-between align-center">
                 <span class="total-price-text">Subtotal: </span>
                 <span class="total-price-amount">$${subTotal}</span>
             </div>
             <div class="total-price-wrapper flex-row space-between align-center">
                 <span class="total-price-text">Meal Deal Discount 10%: </span>
-                <span class="total-price-amount">$${discount}</span>
+                <span class="total-price-amount">-$${discount}</span>
             </div>
-            `:"" }
-            
+            `:null }
+            <hr class='order-hr'/>
             <div class="total-price-wrapper flex-row space-between align-center">
                 <span class="total-price-text">Total:</span>
                 <span class="total-price-amount">${total}</span>

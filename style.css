@@ -7,7 +7,8 @@
   --ff-inter:'Inter', sans-serif;
   --white-primary:#fff;
   --black-primary:#000;
-  --black-secondary:'#3C3C3C';
+  --black-secondary:#3C3C3C;
+  --black-tertiary:#393333;
   --gray-100:#d2d2d2;
   /* gray-100 for hr */
   --gray-200:#bbb;
@@ -73,7 +74,7 @@ button,input{
   width: 100%;
   max-width: 100%;
   margin-inline:auto;
-  padding-inline: .5rem;
+  padding-inline: .75rem;
   padding-block: 1rem;
   
 
@@ -147,9 +148,9 @@ header{
   
 }
 .order-content-button{
-  font-family: var(--ff-verdana);
-  font-size: 0.75rem;
-  color: var(--gray-200);
+  font-family: var(--ff-inter);
+  font-size: 1.25rem;
+  color: var(--gray-700);
   
 }
 
@@ -272,7 +273,7 @@ header{
 
 }
 .menu-food-emoji{
-  min-width: 3.5rem;
+  min-width: 5.7rem;
  
   
 }
@@ -302,7 +303,12 @@ header{
   width:100%;
 }
 
+.order-hr{
+  border: 1.25px solid var(--black-tertiary);
+  width:100%;
+  margin-block: 0.75rem;
 
+}
 
 .order-wrapper{
   
@@ -320,8 +326,10 @@ header{
   
 }
 .order-content-wrapper{
+  /* border: 1px solid green; */
+  gap:.8rem;
   flex:1;
-  max-width: 11rem;
+  max-width: 13rem;
 
 }
 .order-content-food{
@@ -337,7 +345,9 @@ header{
 .order-price{
   
 }
-
+.order-price-wrapper{
+  gap:.5rem;
+}
 .total-price-wrapper{
   
 }
@@ -385,6 +395,7 @@ i:hover{
 
 @media(min-width:680px){
   .container{
+      width: 100%;
       padding: 1.5rem; 
       max-width: 30rem;
   }
