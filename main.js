@@ -1,11 +1,13 @@
-import { renderMenu } from "./render"
-import { addItem } from "./render"
+import { renderMenu, renderOrder,subtractItem ,addItem,removeItem} from "./render"
+
 renderMenu()
-import { removeItem } from "./render"
+renderOrder()
+
 document.addEventListener('click',(e)=>{
-   const {target:{dataset:{add,remove}}}=e
+   const {target:{dataset:{add,subtract,remove}}}=e
 
     add&&addItem(add)
+    subtract&&subtractItem(subtract)
     remove&&removeItem(remove)
    
 })

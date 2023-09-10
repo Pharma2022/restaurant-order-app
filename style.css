@@ -1,4 +1,4 @@
-*,::before,::after{
+*,*::before,*::after{
   box-sizing: border-box
 }
 :root{
@@ -21,6 +21,11 @@
   --green-200:#16db99;
   --green-500:#065F46;
   
+}
+
+html{
+
+ /* font-size: .7rem; */
 }
 
   /* <!--CSS RESET --> */
@@ -60,23 +65,20 @@ button,input{
 .wrap{
   flex-wrap: wrap;
 }
+.width-full{
+  width: 100%;
+}
+
 .container{
-  width: 90%;
+  width: 100%;
+  max-width: 100%;
   margin-inline:auto;
-  padding: 1rem;
+  padding-inline: .5rem;
+  padding-block: 1rem;
+  
+
 }
-@media(min-width:640px){
-  .container{
-      padding: 2rem;
-      max-width: 45rem;
-  }
-  .menu-food-emoji{
-    font-size: 4.875rem;
-  }
-  .menu-food-ingredients{
-    font-size: 1rem;;
-  }
-}
+
 
 
   /* <!-- Typography --> */
@@ -84,8 +86,10 @@ button,input{
 
 body{
   font-family: var(--ff-smythe);
+  
 }
 header{
+  max-width: 100%;
   text-align: left;
   font-weight: 400;
   
@@ -176,11 +180,6 @@ header{
      font-weight: 700;
 
 }
-/* div class="total-price-wrapper flex-row">
-                  <span class="total-price-text">Total price:</span>
-                  <span class="total-price-amount">$26</span>
-              </div>
-              <button class="order-button">Complete Order</button> */
 
 .new-order-button{
   font-family: var(--ff-verdana);
@@ -222,6 +221,7 @@ header{
 header{
   background-image: url('./assets/img/jimmys-diner.png');
   height: 18rem;
+  width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -231,8 +231,7 @@ header{
 .header-container{
 
    justify-content: center;
-  /* align-items:center */
-  gap:1rem;
+ 
 }   
   
 .title{
@@ -257,22 +256,23 @@ header{
 
  
   width: 100%;
-  gap:1.5rem;
-  justify-content: space-evenly;
-}
-.menu-item>*{
-  max-width: 100%;
+ 
 }
 
+
 .menu-content-wrapper{
-  flex: .5;
+
+}
+.menu-button-wrapper{
+
 }
 .menu-content-food-wrapper{
-  flex: .5;
-  min-width: 7.7rem;
+ 
+  width: 10rem;;
+
 }
 .menu-food-emoji{
-  min-width: 5.5rem;
+  min-width: 3.5rem;
  
   
 }
@@ -287,9 +287,9 @@ header{
    padding-block: 1rem;
 }
 .menu-button-wrapper{
-  border: 2px solid purple;
-  gap:.25rem;
-  flex:.15
+ 
+
+
 
 }
 .menu-button{
@@ -320,13 +320,19 @@ header{
   
 }
 .order-content-wrapper{
-  
+  flex:1;
+  max-width: 11rem;
+
 }
 .order-content-food{
-  
+  /* min-width: 4rem; */
+}
+
+.quantity{
+  /* margin-right: 2rem;; */
 }
 .order-content-button{
-  margin-left: 2rem;;
+ 
 }
 .order-price{
   
@@ -375,4 +381,21 @@ header{
 
 i:hover{
   cursor: pointer;
+}
+
+@media(min-width:680px){
+  .container{
+      padding: 1.5rem; 
+      max-width: 30rem;
+  }
+  .menu-food-emoji{
+    font-size: 4.875rem;
+    min-width:7rem;
+  }
+  .menu-food-ingredients{
+    font-size: 1rem;;
+  }
+  .order-content-food{
+    min-width: 6rem;
+  }
 }

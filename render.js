@@ -2,18 +2,20 @@ import { menuArray } from "./data";
 import { menu,order } from "./consts";
 
 
-let ordersArr=[]
+// let ordersArr=[]
+
+let ordersArr=menuArray.map(item=>({...item,count:1}))
 const targetFood=(ID,arr)=>arr.filter(({id})=>id===ID)[0]
 
 
 
 
-export const removeItem=(ID)=>{
-    console.log(ID)
+export const subtractItem=(ID)=>{
+    
     const targetOrderFood= targetFood(ID,ordersArr)
-
+   
     targetOrderFood.count ? targetOrderFood.count-- :""
-    ordersArr=(!targetOrderFood.count&&ordersArr.filter(({id})=>id!==ID))||ordersArr
+    targetOrderFood.count===0&& removeItem(ID)
     renderMenu()
     renderOrder()
 }
@@ -27,12 +29,16 @@ export const addItem=(ID)=>{
     renderOrder()
 }
 
-
+export const removeItem=(ID)=>{
+    
+     ordersArr=ordersArr.filter(({id})=>id!==ID)
+     renderMenu()
+     renderOrder()
+}
 
 
 export const renderMenu=()=>{
-    // need to have a function that filters through the order array and accesses the count of each item. 
-    // If the count is 0 or less need to disable the remove button
+   
     menu.innerHTML=`<div class="menu-item-wrapper flex-col">${
     menuArray.map(({
         name,
@@ -41,22 +47,22 @@ export const renderMenu=()=>{
         emoji,
         id,
         type,})=>
-            `<div class="menu-item  flex-row  align-center">
-                <div class="menu-content-wrapper flex-row align-center space-between">
-                        <div class="menu-food-emoji">
+            `<div class="menu-item  flex-row   align-center space-between">
+                <div class="menu-content-wrapper flex-row align-center">
+                        <div class="menu-food-emoji ">
                                 ${emoji}
                         </div>
-                        <div class="menu-content-food-wrapper flex-col">
+                        <div class="menu-content-food-wrapper flex-col ">
                             <h3 class="menu-food-name">${name}</h3>
-                            <p class="menu-food-ingredients">
-                                ${ingredients.map((item,i)=> i < (ingredients.length-1) ? `${item}, ` : `and ${item}`)}
+                            <p class="menu-food-ingredients flex-col ">
+                                ${ingredients.map((item,i)=> i < (ingredients.length-1) ? `${item}, ` : `and ${item}`).join("")}
                             </p> 
                             <p class="menu-food-price">$${price}</p>
                         </div>  
                 </div>
-                <div class="menu-button-wrapper flex-row space-around">
+                <div class="menu-button-wrapper flex-row space-between">
                     <button class="menu-button"  >
-                    <i class="fa-solid fa-circle-minus" data-remove="${id}">
+                    <i class="fa-solid fa-circle-minus" data-subtract="${id}">
                             </i>
                     </button>
                     <button class="menu-button space-around"  >
@@ -70,7 +76,7 @@ export const renderMenu=()=>{
 
 }</div>`}
 
-const renderOrder=()=>{
+export const renderOrder=()=>{
 
     order.innerHTML=ordersArr.length?`<h3 class="order-title">Your Order</h3>
         <div class="order-items-container flex-col" >
@@ -78,27 +84,73 @@ const renderOrder=()=>{
                  `<div class="order-item-wrapper flex-row space-between align-center">
                             <div class="order-content-wrapper flex-row align-center space-between">
                                     <p class="order-content-food">
-                                        ${name}
+                                        ${name} x ${count} 
                                     </p>
-                                    <span class='quantity'>Quantity: ${count} </span>
-                                    <button class="order-content-button"  >
-                                    ${count===1 ?`<span data-remove="${id}">remove</span>`:`<i class="fa-solid fa-circle-minus"data-remove="${id}">
-                                            </i>`}
-                                    </button>
-                                    <button class="order-content-button"  >
-                                    <i class="fa-solid fa-circle-plus" data-add="${id}" >
-                                            </i>
-                                    </button>
+                                    <span data-remove="${id}">remove</span>
+                                  
+                                   
+                                   
+                                    
                                   
                                     
                             </div>
                             
-                            <p class="order-price"
-                                $${price}
-                            </p>
+                            <div class='order-price-wrapper flex-row space-between align-center'>
+                                 <div class='order-content-button-wrapper flex-row space-around align-center'>
+                                    <button class="order-content-button"  >
+                                        <i class="fa-solid fa-circle-minus" data-subtract="${id}">
+                                                </i>
+                                    </button>
+                                    <button class="order-content-button"  >
+                                        <i class="fa-solid fa-circle-plus" data-add="${id}" >
+                                                </i>
+                                    </button>
+                                    
+                                </div>    
+                            
+                           
+                                <p class="order-price">
+                                $${price*count}
+                                </p>
+                            </div>
 
                     </div>`).join("")}
-        </div>`:""}
+        </div>
+        
+        ${getOrderTotalHtml()}
+        `:""
+    
+    }
 
 
 
+export const getOrderTotalHtml=()=>{
+    const subTotal = ordersArr.reduce((acc,{price})=>acc+price,0)
+    
+
+    const isDiscounted = ordersArr.filter(({type})=>type==='drink'&&type==='food')
+
+    const total=isDiscounted? (subTotal*0.9).toFixed(2) :subTotal
+    const discount =isDiscounted ? (subTotal-total).toFixed(2) :null
+
+
+    return `${isDiscounted? 
+            `<div class="total-price-wrapper flex-row space-between align-center">
+                <span class="total-price-text">Subtotal: </span>
+                <span class="total-price-amount">$${subTotal}</span>
+            </div>
+            <div class="total-price-wrapper flex-row space-between align-center">
+                <span class="total-price-text">Meal Deal Discount 10%: </span>
+                <span class="total-price-amount">$${discount}</span>
+            </div>
+            `:"" }
+            
+            <div class="total-price-wrapper flex-row space-between align-center">
+                <span class="total-price-text">Total:</span>
+                <span class="total-price-amount">${total}</span>
+            </div>
+            
+            <button class="order-button btn-primary">Complete Order</button>`
+
+
+}
