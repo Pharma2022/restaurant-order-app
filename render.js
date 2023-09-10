@@ -130,15 +130,15 @@ export const getOrderTotalHtml=()=>{
                 <span class="total-price-text">Subtotal: </span>
                 <span class="total-price-amount">$${subTotal}</span>
             </div>
-            <div class="total-price-wrapper flex-row space-between align-center">
-                <span class="total-price-text">Meal Deal Discount 10%: </span>
-                <span class="total-price-amount">-$${discount}</span>
+            <div class="total-price-wrapper  flex-row space-between align-center">
+                <span class="total-price-text discount ">Meal Deal Discount 10%: </span>
+                <span class="total-price-amount discount">-$${discount}</span>
             </div>
             `:null }
             <hr class='order-hr'/>
             <div class="total-price-wrapper flex-row space-between align-center">
                 <span class="total-price-text">Total:</span>
-                <span class="total-price-amount">${total}</span>
+                <span class="total-price-amount">$${total}</span>
             </div>
             
             <button class="order-button btn-primary">Complete Order</button>`

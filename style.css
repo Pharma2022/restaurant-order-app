@@ -20,7 +20,8 @@
   --gray-700:#3C3C3C;
   --green-100:#ECFDF5;
   --green-200:#16db99;
-  --green-500:#065F46;
+  --green-500:#11a775;
+  --green-700:#065F46;
   
 }
 
@@ -163,11 +164,14 @@ header{
 .total-price-text{
   font-size: 1.75rem;
   font-family: var(--ff-smythe);
-    color: var(--black-primary);   
+  color: var(--black-primary);
 }
 .total-price-amount{
   font-size: 1.25rem;
     color: var(--black-primary);
+}
+.discount{
+  color: var(--green-500);
 }
 .order-button{
   font-size: 1rem;
@@ -329,27 +333,26 @@ header{
   /* border: 1px solid green; */
   gap:.8rem;
   flex:1;
-  max-width: 13rem;
+  max-width: 11rem;
 
 }
 .order-content-food{
-  /* min-width: 4rem; */
+  min-width: 8.5rem;;
 }
 
-.quantity{
-  /* margin-right: 2rem;; */
-}
+
 .order-content-button{
  
 }
 .order-price{
-  
+  min-width: 1.8rem;
+  text-align: right;
 }
 .order-price-wrapper{
   gap:.5rem;
 }
 .total-price-wrapper{
-  
+  padding-block: .25rem;
 }
 .total-price-text{
   
@@ -359,7 +362,7 @@ header{
 }
 
 .order-button{
-  
+  margin-block: .5rem;
 }
 
 
@@ -396,8 +399,8 @@ i:hover{
 @media(min-width:680px){
   .container{
       width: 100%;
-      padding: 1.5rem; 
-      max-width: 30rem;
+      padding-inline: 1.5rem; 
+      max-width: 35rem;
   }
   .menu-food-emoji{
     font-size: 4.875rem;
@@ -407,6 +410,6 @@ i:hover{
     font-size: 1rem;;
   }
   .order-content-food{
-    min-width: 6rem;
+    min-width: 10rem;
   }
 }
