@@ -12,7 +12,7 @@
   </head>
   <body>
       <header class="flex-row" >
-          <div class="container header-container flex-col">
+          <div class="container header-container justify-center flex-col">
               <h1 class="title">Shah's Diner</h1>
               <h2 class="subtitle">The Best Diner in town</h2>
           </div>
@@ -35,20 +35,25 @@
       
       
       
-      <!-- <div class="container order-confirmation-container">
-          <h3 class="order-confirmation-text">Thank you Shah your order is on the way </h3>
-          <button class="new-order-button" id='new-order'>New Order</button>
-      </div> -->
+      <div class="container order-confirmation-container flex-col justify-center hide" id="order-confirmation">
+          
+          <h3 class="order-confirmation-text" id="order-confirmation-text"> </h3>
+          <button class="new-order-button btn-primary" id='new-order'>New Order</button>
+      </div>
   </section>
   
   <!-- Form -->
-  <div class="form-container">
-      <h4 class="form-title">Enter Card Details</h4>    
-      <form class="payment-form flex-col">
-          <input class="payment-form-input" type="name" id="name" />
-          <input class="payment-form-input" type="text" id="card-number" />
-          <input class="payment-form-input" type="number" id="cvv"/>
-          <button class="payment-button" id="payment-button">Pay</button>
+  <div class="container form-container hide  flex-col justify-center " id="form-container" >
+        <div class="form-top flex-row space-between align-center">
+            <h4 class="form-title ">Enter Card Details</h4>    
+           <i class="fa-solid fa-xmark close-form" id="close-form"></i>
+
+        </div>    
+      <form class="container payment-form flex-col" id="form">
+          <input class="payment-form-input" placeholder="Enter your name" type="name" id="name" />
+          <input class="payment-form-input" placeholder="Enter your card number" type="text" id="card-number" />
+          <input class="payment-form-input" placeholder="Enter your cvv" type="number" id="cvv"/>
+          <button class="payment-button btn-primary" id="payment-button">Pay</button>
       </form>
       
   </div>

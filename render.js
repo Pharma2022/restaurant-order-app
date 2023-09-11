@@ -2,9 +2,9 @@ import { menuArray } from "./data";
 import { menu,order } from "./consts";
 
 
-// let ordersArr=[]
+let ordersArr=[]
+export const clearOrderArr=()=>ordersArr=[]
 
-let ordersArr=menuArray.map(item=>({...item,count:1}))
 const targetFood=(ID,arr)=>arr.filter(({id})=>id===ID)[0]
 
 
@@ -46,9 +46,8 @@ export const renderMenu=()=>{
         price,
         emoji,
         id,
-        type,})=>
-            `<div class="menu-item  flex-row   align-center space-between">
-                <div class="menu-content-wrapper flex-row align-center">
+        type,})=>`<div class="menu-item  flex-row   align-center space-between">
+                <div class="menu-content-wrapper flex-row  align-center width-full">
                         <div class="menu-food-emoji ">
                                 ${emoji}
                         </div>
@@ -61,12 +60,13 @@ export const renderMenu=()=>{
                         </div>  
                 </div>
                 <div class="menu-button-wrapper flex-row space-between">
-                    <button class="menu-button"  >
-                        <i class="fa-solid fa-circle-minus" data-subtract="${id}"></i>
-                    </button>
-                    <button class="menu-button"  >
-                        <i class="fa-solid fa-circle-plus" data-add="${id}"></i>
-                    </button>
+                    <span class="menu-button" >
+                        <i class="fa-solid fa-circle-minus " data-subtract="${id}"></i>
+                    </span>
+                    <span class="menu-button"  >
+                        
+                        <i class="fa-solid fa-circle-plus " data-add="${id}"></i>
+                    </span>
                 
                 </div>
         </div>
@@ -89,16 +89,14 @@ export const renderOrder=()=>{
                             
                             <div class='order-price-wrapper flex-row space-between align-center'>
                                 <div class='order-content-button-wrapper flex-row space-around align-center'>
-                                    <button class="order-content-button"  >
-                                        <i class="fa-solid fa-circle-minus" data-subtract="${id}"></i>
-                                    </button>
-                                    <button class="order-content-button"  >
-                                        <i class="fa-solid fa-circle-plus" data-add="${id}" ></i>
-                                    </button>
-                                    
+                                    <span class="order-content-button"  >
+                                        <i class="fa-solid fa-circle-minus " data-subtract="${id}"></i>
+                                    </span>
+                                    <span class="order-content-button"  >
+                                        <i class="fa-solid fa-circle-plus " data-add="${id}" ></i>
+                                    </span>
+        
                                 </div>    
-                            
-                           
                                 <p class="order-price">
                                 $${price*count}
                                 </p>
@@ -119,7 +117,7 @@ export const getOrderTotalHtml=()=>{
     
     const targetType=(typ)=>ordersArr.filter(({type})=>type===typ)[0]
     const isDiscounted = targetType('food')&&targetType('drink')
-    console.log(isDiscounted)
+    
     const total=isDiscounted? (subTotal*0.9).toFixed(2) :subTotal
     const discount =isDiscounted ? (subTotal-total).toFixed(2) :null
 
@@ -134,14 +132,14 @@ export const getOrderTotalHtml=()=>{
                 <span class="total-price-text discount ">Meal Deal Discount 10%: </span>
                 <span class="total-price-amount discount">-$${discount}</span>
             </div>
-            `:null }
+            `:"" }
             <hr class='order-hr'/>
             <div class="total-price-wrapper flex-row space-between align-center">
                 <span class="total-price-text">Total:</span>
                 <span class="total-price-amount">$${total}</span>
             </div>
             
-            <button class="order-button btn-primary">Complete Order</button>`
+            <button class="order-button btn-primary" id='complete-order'>Complete Order</button>`
 
 
 }

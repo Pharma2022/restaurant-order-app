@@ -1,6 +1,8 @@
 *,*::before,*::after{
-  box-sizing: border-box
+  box-sizing: border-box;
+  
 }
+
 :root{
   --ff-verdana:'Verdana', sans-serif;
   --ff-smythe: 'Smythe', cursive;
@@ -9,14 +11,10 @@
   --black-primary:#000;
   --black-secondary:#3C3C3C;
   --black-tertiary:#393333;
-  --gray-100:#d2d2d2;
-  /* gray-100 for hr */
+  --gray-100:#d2d2d2; 
   --gray-200:#bbb;
-  /* remove menu items */
   --gray-400:#8b8b8b;
-  /* ingredients */
   --gray-500:#757575;
-  /*gray-500 input borders on form */
   --gray-700:#3C3C3C;
   --green-100:#ECFDF5;
   --green-200:#16db99;
@@ -27,7 +25,7 @@
 
 html{
 
- /* font-size: .7rem; */
+ font-size: .9rem;
 }
 
   /* <!--CSS RESET --> */
@@ -57,6 +55,9 @@ button,input{
 .space-around{
   justify-content: space-around;
 }
+.space-evenly{
+  justify-content: space-evenly;
+}
 .justify-center{
   justify-content: center;   
 }
@@ -70,10 +71,15 @@ button,input{
 .width-full{
   width: 100%;
 }
-
+.hide{
+  display: none;
+}
+button:disabled{
+  opacity: .5;
+}
 .container{
   width: 100%;
-  max-width: 100%;
+  max-width: 100vw;
   margin-inline:auto;
   padding-inline: .75rem;
   padding-block: 1rem;
@@ -85,17 +91,13 @@ button,input{
 
   /* <!-- Typography --> */
 
-
 body{
   font-family: var(--ff-smythe);
   
 }
 header{
-  max-width: 100%;
   text-align: left;
   font-weight: 400;
-  
-  
 }
 .title{
   font-size: 2.4rem;
@@ -134,7 +136,7 @@ header{
 .menu-button{
   font-family: var(--ff-inter);
   font-size: 2rem;
-  color: var(--gray-700);
+  color: var(--green-700)
 }
 
 .order-title{
@@ -155,11 +157,16 @@ header{
   
 }
 
+
 .order-price{
   font-size: 1.25rem;
   color: var(--black-primary);
 }
-
+.order-confirmation-text{
+  font-size: 2rem;
+  text-align: center;
+  color: var(--green-700);
+}
 
 .total-price-text{
   font-size: 1.75rem;
@@ -190,11 +197,18 @@ header{
   font-family: var(--ff-verdana);
   font-size: 1.25rem;
 }
-
+.form-title{
+  font-family:var(--ff-verdana);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
 .payment-form-button,.payment-form-input{
   font-family: var(--ff-verdana);
   font-size: 1.25rem;
 }
+
+
 .payment-form-button{
   color: var(--white-primary);
   font-weight: 700;
@@ -203,7 +217,11 @@ header{
   color: var(--gray-500);
 }
 
-
+.close-form{
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: black;
+}
 
 
   /* <!-- Buttons --> */
@@ -211,75 +229,40 @@ header{
 .btn-primary{
   padding: 1rem 2rem;
   border-radius: 0.24313rem;
+  border: none;
   background: #16DB99;
 }
-/* add item */
-.btn-secondary{
-  
+i{
+  background-color: white;
+  border: none;
 }
-/*remove item  */
-
-/* complete order, pay, new order */
-
 
   /* <!-- Main Styles --> */
 header{
   background-image: url('./assets/img/jimmys-diner.png');
-  height: 18rem;
-  width: 100vw;
+  min-height: 15rem;
+  height: 100%;
+  max-width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
- 
-  
+  background-position: right center;
 }    
-.header-container{
 
-   justify-content: center;
- 
-}   
-  
-.title{
-  
-}
-.subtitle{
-  
-}
 
-.menu-wrapper{
-  
-}
-.menu-container{
-  
-  
-}
-.menu-item-wrapper{
-  
-}
 .menu-item{
- 
-
- 
-  width: 100%;
- 
+  width: 100%; 
 }
 
 
 .menu-content-wrapper{
-
+  gap:1.25rem;
 }
-.menu-button-wrapper{
 
-}
 .menu-content-food-wrapper{
- 
-  width: 10rem;;
-
+ flex:2
 }
 .menu-food-emoji{
-  min-width: 5.7rem;
- 
-  
+  flex:.75
 }
 .menu-food-name{
    padding-block: .5rem;
@@ -291,46 +274,26 @@ header{
 .menu-food-price{
    padding-block: 1rem;
 }
-.menu-button-wrapper{
- 
-
-
-
-}
-.menu-button{
-  
-  
-}
 
 .menu-hr{
   border: 2px solid var(--gray-100);
   width:100%;
 }
-
+.menu-hr:last-of-type{
+  margin-bottom: 0
+}
 .order-hr{
   border: 1.25px solid var(--black-tertiary);
   width:100%;
   margin-block: 0.75rem;
-
 }
 
-.order-wrapper{
-  
-}
 .order-container{
+  height: fit-content;
   
 }
-.order-title{
-  
-}
-.order-item-wrapper{
-  
-}
-.order-items-container{
-  
-}
+
 .order-content-wrapper{
-  /* border: 1px solid green; */
   gap:.8rem;
   flex:1;
   max-width: 11rem;
@@ -340,10 +303,11 @@ header{
   min-width: 8.5rem;;
 }
 
-
-.order-content-button{
- 
+i{
+  border-top: none;;
+  border-bottom: none;
 }
+
 .order-price{
   min-width: 1.8rem;
   text-align: right;
@@ -354,53 +318,78 @@ header{
 .total-price-wrapper{
   padding-block: .25rem;
 }
-.total-price-text{
-  
-}
-.total-price-amount{
-  
-}
 
 .order-button{
   margin-block: .5rem;
 }
-
-
 .form-container{
-  display: none;
+  border-radius: 0.25rem;
+  padding-block: 1rem;
+  width: 100%;
+  max-width: 100vw;
+  height: fit-content;
+  gap:1rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto; 
+  background-color: #ffffff;
+  box-shadow: 5.186544418334961px 5.186544418334961px 255.43731689453125px 0px #00000080;
+
 }
+
 .payment-form{
-  
+  padding-inline: 0.5rem;
+  gap: 1rem;
+}
+
+.close-form{
+  padding-block: 1rem;
+  margin-left: auto;
+}
+
+.close-form:hover{
+  opacity: .5;
+  text-decoration: underline;
+  transform: scale(1.15);
+}
+.form-title{
+  justify-self: center;
+  margin-left: auto;
   
 }
 .payment-form-input{
-  
+  padding: .75rem 1.5rem;
+  border-radius: 0.25rem;
+  border: 1.2px solid var(--gray-500);  
 }
 
-.payment-form-button{
-  
-}
 
 .order-confirmation-container{
-  
+  gap:1rem;
+  padding-block: 1rem;
+  background-color: #ECFDF5;
 }
 
-.order-confirmation-text{
-  
-}
-.new-order-button{
-  
-}
+
 
 i:hover{
   cursor: pointer;
 }
 
 @media(min-width:680px){
+  html{
+    font-size: .95rem;
+  }
+ 
   .container{
-      width: 100%;
-      padding-inline: 1.5rem; 
-      max-width: 35rem;
+    padding-inline: 1.5rem; 
+    max-width: 32.5rem;
+  }
+  .btn-primary{
+    margin-inline:auto;
   }
   .menu-food-emoji{
     font-size: 4.875rem;
@@ -409,7 +398,13 @@ i:hover{
   .menu-food-ingredients{
     font-size: 1rem;;
   }
+  .menu-content-wrapper{
+  
+    width: 100%;
+    gap:2.5rem;
+  }
   .order-content-food{
     min-width: 10rem;
   }
 }
+

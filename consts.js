@@ -1,2 +1,13 @@
 export const menu=document.getElementById('menu')
 export const order=document.getElementById('order')
+export const form=document.getElementById('form')
+export const formContainer=document.getElementById('form-container')
+export const completeOrder=document.getElementById('complete-order')
+export const orderConfirmation=document.getElementById('order-confirmation')
+export const orderConfirmationText=document.getElementById('order-confirmation-text')
+export const newOrder=document.getElementById('new-order')
+
+export const formName=document.getElementById('name')
+export const formCardNo=document.getElementById('card-number')
+export const formCVV=document.getElementById('cvv')
+export const formPaymentBtn=document.getElementById('payment-button')
