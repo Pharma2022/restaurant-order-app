@@ -6,8 +6,8 @@ Quick start:
 $ npm install
 $ npm run dev
 ````
+This is a restaurant ordering application 
 
-This is a quiz application that uses a restful API from https://opentdb.com/api_config.php . There is no API key required.
 
 See [Demo]([https://get-quizzical.netlify.app/](https://shahs-diner.netlify.app/))
 Please note that this demo is linked to the React version of of this, so will look and function slightly differently. You can view the react-repo for my restaurant app [here](https://github.com/Pharma2022/restaurant-order-react/tree/main)
@@ -22,7 +22,7 @@ Please note that this demo is linked to the React version of of this, so will lo
 
 ## Stretch goals
 - As mentioned earlier, I coded this application using React - [repo here](https://github.com/Pharma2022/restaurant-order-react/tree/main)
-- I had a feature to add a discount
+- I had a feature to add a conditional discount if you ordered a main dish and a drink 
 
 ## Further Stretch Goals/General Improvements
 - To refactor the CSS to make maintenance easier
